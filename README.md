@@ -1,6 +1,6 @@
 # Ansible Docker Installation
 
-Ce projet contient un playbook Ansible pour automatiser l'installation de Docker sur une VM Debian 11.
+Ce projet contient un playbook Ansible pour automatiser l'installation de Docker sur une VM Debian 11 installée avec Vagrant.
 
 ## Structure du projet
 
