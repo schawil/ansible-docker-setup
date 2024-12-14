@@ -1,0 +1,6 @@
+---
+- name: Setup Docker on Debian 11
+  hosts: debian
+  become: yes
+  roles:
+    - docker

@@ -1,0 +1,46 @@
+---
+# Tâches pour installer Docker
+
+# Mettre à jour le cache APT
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+# Installer les paquets requis
+- name: Install required packages
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - gnupg   # Ajout du paquet GPG ici
+    state: present
+
+# Ajouter la clé GPG de Docker
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+# Ajouter le dépôt Docker
+- name: Add Docker repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable
+    state: present
+
+# Installer Docker
+- name: Install Docker
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: latest
+
+# S'assurer que le service Docker est actif
+- name: Ensure Docker service is running
+  service:
+    name: docker
+    state: started
+    enabled: yes
